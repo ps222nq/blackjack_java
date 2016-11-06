@@ -12,17 +12,17 @@ public class SwedishView implements IView
             System.out.println("Skriv 'p' för att Spela, 'h' för nytt kort, 's' för att stanna 'q' för att avsluta\n");
         }
         
-        public int GetInput()
+        public BlackJack.view.IView.MenuChoice GetInput()
         {
           try {
             int c = System.in.read();
             while (c == '\r' || c =='\n') {
               c = System.in.read();
             }
-            return c;
+            return MenuChoiceForInput((char)c);
           } catch (java.io.IOException e) {
             System.out.println("" + e);
-            return 0;
+            return BlackJack.view.IView.MenuChoice.Quit;
           }
         }
         
@@ -71,5 +71,28 @@ public class SwedishView implements IView
             }
             System.out.println("Poäng: " + a_score);
             System.out.println("");
+        }
+
+        private BlackJack.view.IView.MenuChoice MenuChoiceForInput(char input)
+        {
+            BlackJack.view.IView.MenuChoice c;
+            switch (input){
+                case 'p':
+                    c = BlackJack.view.IView.MenuChoice.NewGame;
+                    break;
+                case 'h':
+                    c = BlackJack.view.IView.MenuChoice.Hit;
+                    break;
+                case 's':
+                    c = BlackJack.view.IView.MenuChoice.Stand;
+                    break;
+                case 'q':
+                    c = BlackJack.view.IView.MenuChoice.Quit;
+                    break;
+                default:
+                    c = BlackJack.view.IView.MenuChoice.Quit;
+                    break;
+                }
+            return c;
         }
     }

@@ -16,17 +16,18 @@ public class PlayGame {
         a_view.DisplayGameOver(a_game.IsDealerWinner());
     }
 
-    int input = a_view.GetInput();
+    BlackJack.view.IView.MenuChoice input = a_view.GetInput();
+
     
-    if (input == 'p')
+    if (input == BlackJack.view.IView.MenuChoice.NewGame)
     {
         a_game.NewGame();
     }
-    else if (input == 'h')
+    else if (input == BlackJack.view.IView.MenuChoice.Hit)
     {
         a_game.Hit();
     }
-    else if (input == 's')
+    else if (input == BlackJack.view.IView.MenuChoice.Stand)
     {
         a_game.Stand();
     }
