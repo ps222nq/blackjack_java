@@ -32,6 +32,6 @@ public class PlayGame {
         a_game.Stand();
     }
 
-    return input != 'q';
+    return input != BlackJack.view.IView.MenuChoice.Quit;
   }
 }
